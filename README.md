@@ -23,28 +23,6 @@ PostgreSQL
 PostgreSQL is the Database used for this REST API.PostgreSQL is a powerful, open source object-relational database system. 
 Its features which makes it a very strong are Reliability,Correctness,Data Integrity.
 
-Create Schema:
-
-	CREATE TABLE public."ROUTE"
-	(
-    "ROUTE_ID" integer NOT NULL,
-    "SOURCE" text COLLATE pg_catalog."default" NOT NULL,
-    "DESTINATION" text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "ROUTE_pkey" PRIMARY KEY ("ROUTE_ID")
-	)
-	WITH (
-    OIDS = FALSE
-	)
-	TABLESPACE pg_default;
-
-	ALTER TABLE public."ROUTE"
-    OWNER to postgres;
-
-Insert Schema:
-	
-	INSERT INTO public."ROUTE"(
-	"ROUTE_ID", "SOURCE", "DESTINATION") VALUES (1, 'SOURCE', 'DESTINATION');
-
 REST Endpoints
 ----------------
 
