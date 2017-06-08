@@ -28,7 +28,7 @@ REST Endpoints
 
 Get Bus Routes:
 
-Endpoint:http://localhost:8080/rest/user/routenumber?source=Broadway&destination=Kundrathur
+Endpoint:http://localhost:8080/rest/bus/routenumber?source=Broadway&destination=Kundrathur
 
 Result:
 
@@ -38,7 +38,7 @@ Result:
 
 Get Route By ID:
 
-Endpoint:http://localhost:8080/rest/user/route/20
+Endpoint:http://localhost:8080/rest/bus/route/20
 
 Result:
 
@@ -47,7 +47,7 @@ Result:
 
 Get All Routes:
 
-Endpoint: http://localhost:8080/rest/user/routes 
+Endpoint: http://localhost:8080/rest/bus/routes 
 
 Result:
 
