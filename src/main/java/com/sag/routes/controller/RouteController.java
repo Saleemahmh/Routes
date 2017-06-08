@@ -25,10 +25,10 @@ import com.sag.routes.service.ServiceI;
 
 //RestController which contains all REST endpoints
 @RestController
-@RequestMapping("/user")     //sample endpoint--- localhost:8080/rest/user
-public class Controller {
+@RequestMapping("/bus")     //sample endpoint--- localhost:8080/rest/user
+public class RouteController {
 
-	final static Logger logger = Logger.getLogger(Controller.class);
+	final static Logger logger = Logger.getLogger(RouteController.class);
 
 	@Autowired
 	private ServiceI serviceI;
@@ -88,7 +88,7 @@ public class Controller {
 
 	// Bus Controller
 
-	@GetMapping("/busdetails/{id}")//sample endpoint---- localhost:8080/rest/user/busdetails/{id}
+	@GetMapping("/busdetails/{id}")   //sample endpoint---- localhost:8080/rest/user/busdetails/{id}
 	public ResponseEntity<BusDetails> getBusDetailsById(@PathVariable("id") Integer id) {
 		BusDetails busDetails = serviceI.getBusDetailsById(id);
 		return new ResponseEntity<BusDetails>(busDetails, HttpStatus.OK);
