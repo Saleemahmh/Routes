@@ -38,4 +38,6 @@ public interface ServiceI {
 	void updateBusDetails(BusDetails busDetails);
 
 	void deleteBusDetails(int busDetailsId);
+	
+	
 }

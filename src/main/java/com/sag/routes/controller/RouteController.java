@@ -1,6 +1,9 @@
 package com.sag.routes.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +17,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sag.routes.model.BusDetails;
+import com.sag.routes.model.ImageUrl;
 import com.sag.routes.model.Route;
 import com.sag.routes.model.RouteDTO;
+
 import com.sag.routes.service.ServiceI;
 
 //RestController which contains all REST endpoints
 @RestController
-@RequestMapping("/bus")     //sample endpoint--- localhost:8080/rest/user
+@RequestMapping("/bus")     //sample endpoint--- localhost:8080/rest/bus
 public class RouteController {
 
 	final static Logger logger = Logger.getLogger(RouteController.class);
@@ -42,7 +48,7 @@ public class RouteController {
 	 * @PutMapping--specifies PUT method
 	 * @DeleteMapping--specifies DELETE method
 	 */
-	@GetMapping("/route/{id}")   //sample endpoint---- localhost:8080/rest/user/route/{id}
+	@GetMapping("/route/{id}")   //sample endpoint---- localhost:8080/rest/bus/route/{id}
 	public ResponseEntity<Route> getRouteById(@PathVariable("id") Integer id) {
 		Route route = serviceI.getRouteById(id);
 		return new ResponseEntity<Route>(route, HttpStatus.OK);
@@ -88,7 +94,7 @@ public class RouteController {
 
 	// Bus Controller
 
-	@GetMapping("/busdetails/{id}")   //sample endpoint---- localhost:8080/rest/user/busdetails/{id}
+	@GetMapping("/busdetails/{id}")   //sample endpoint---- localhost:8080/rest/bus/busdetails/{id}
 	public ResponseEntity<BusDetails> getBusDetailsById(@PathVariable("id") Integer id) {
 		BusDetails busDetails = serviceI.getBusDetailsById(id);
 		return new ResponseEntity<BusDetails>(busDetails, HttpStatus.OK);
@@ -122,5 +128,6 @@ public class RouteController {
 		serviceI.deleteBusDetails(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-
-}
+	
+	
+	}
