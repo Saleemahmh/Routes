@@ -23,6 +23,8 @@ PostgreSQL
 PostgreSQL is the Database used for this REST API.PostgreSQL is a powerful, open source object-relational database system. 
 Its features which makes it a very strong are Reliability,Correctness,Data Integrity.
 
+Download PostgreSQL here : https://www.postgresql.org/download/
+
 REST Endpoints
 ----------------
 
