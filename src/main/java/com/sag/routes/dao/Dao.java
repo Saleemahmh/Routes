@@ -1,9 +1,11 @@
 package com.sag.routes.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.sag.routes.model.BusDetails;
 import com.sag.routes.model.Route;
+import com.sag.routes.model.TrainDetails;
 
 //CRUD Operations
 
@@ -46,5 +48,28 @@ public interface Dao {
 	// Check whether bus ID exists or not to create a new bus number to avoid
 	// duplication
 	boolean busDetailsExists(String route_Num);
+	
+	
+	
+	// Train DAO
+
+		// Get all available routes
+		List<TrainDetails> getAllTrainDetails();
+
+		// Get Train route for given source and destination
+		public List<TrainDetails> getTrainRoute(String source, String destination);
+
+		// Get routes based on ID
+		TrainDetails getTrainDetailsById(int trainId);
+
+		void addTrainDetails(TrainDetails trainDetails);
+
+		void updateTrainDetails(TrainDetails trainDetails);
+
+		void deleteTrainDetails(int trainDetailsId);
+		// Check whether route ID exists or not to create a new route to avoid
+		// duplication
+		boolean trainDetailsExists(String source, String destination,String route,Timestamp time);
+
 
 }

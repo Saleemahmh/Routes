@@ -10,6 +10,7 @@ import com.sag.routes.dao.Dao;
 import com.sag.routes.model.BusDetails;
 import com.sag.routes.model.Route;
 import com.sag.routes.model.RouteDTO;
+import com.sag.routes.model.TrainDetails;
 
 //Service Implementation for route and bus service with the Annotation @Service
 @Service
@@ -98,6 +99,48 @@ public class ServiceImpl implements ServiceI {
 	@Override
 	public void deleteBusDetails(int busDetailsId) {
 		dao.deleteBusDetails(busDetailsId);
+	}
+	
+	// Train Service Implementation
+	
+	
+	@Override
+	public TrainDetails getTrainDetailsById(int trainId) {
+		TrainDetails obj = dao.getTrainDetailsById(trainId);
+		return obj;
+	}
+
+	@Override
+	public List<TrainDetails> getAllTrainDetails() {
+		return dao.getAllTrainDetails();
+	}
+
+	@Override
+	public synchronized boolean addTrainDetails(TrainDetails trainDetails) {
+		if (dao.trainDetailsExists(trainDetails.getSource(),trainDetails.getDestination(),trainDetails.getRoute(),trainDetails.getTime())) {
+			return false;
+		} else {
+			dao.addTrainDetails(trainDetails);
+			return true;
+		}
+	}
+
+	@Override
+	public void updateTrainDetails(TrainDetails trainDetails) {
+		dao.updateTrainDetails(trainDetails);
+	}
+
+	@Override
+	public void deleteTrainDetails(int trainId) {
+		dao.deleteTrainDetails(trainId);
+	}
+
+	@Override
+	public List<TrainDetails> getTrainRoute(String source, String destination) {
+		List<TrainDetails> trainRoute = dao.getTrainRoute(source, destination);
+		
+		return trainRoute;
+
 	}
 
 }

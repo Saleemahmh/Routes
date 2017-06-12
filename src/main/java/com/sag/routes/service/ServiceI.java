@@ -5,6 +5,7 @@ import java.util.List;
 import com.sag.routes.model.BusDetails;
 import com.sag.routes.model.Route;
 import com.sag.routes.model.RouteDTO;
+import com.sag.routes.model.TrainDetails;
 
 // Service Interface
 
@@ -39,5 +40,21 @@ public interface ServiceI {
 
 	void deleteBusDetails(int busDetailsId);
 	
+	
+	// Train Service
+		// Get all available TrainDetails
+		List<TrainDetails> getAllTrainDetails();
+
+		// Get trainDetails based on ID
+		TrainDetails getTrainDetailsById(int trainId);
+
+		// Get Train route for given source and destination
+		public List<TrainDetails> getTrainRoute(String source, String destination);
+
+		boolean addTrainDetails(TrainDetails trainDetails);
+
+		void updateTrainDetails(TrainDetails trainDetails);
+
+		void deleteTrainDetails(int trainId);
 	
 }
