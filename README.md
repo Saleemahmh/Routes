@@ -30,7 +30,7 @@ REST Endpoints
 
 Get Bus Routes:
 
-Endpoint:http://localhost:8080/rest/bus/routenumber?source=Broadway&destination=Kundrathur
+Endpoint:http://localhost:8080/rest/bus/routenumbers?source=Broadway&destination=Kundrathur
 
 Result:
 
@@ -40,7 +40,7 @@ Result:
 
 Get Route By ID:
 
-Endpoint:http://localhost:8080/rest/bus/route/20
+Endpoint:http://localhost:8080/rest/bus/routes/20
 
 Result:
 
@@ -61,7 +61,7 @@ Result:
 	
 Get Train route (with respect to time) :
 
-Endpoints:http://localhost:8080/rest/train/routenumber?source=chennai%20beach&destination=velachery
+Endpoints:http://localhost:8080/rest/train/time?source=chennai%20beach&destination=velachery
 
 Result:
 
@@ -81,9 +81,10 @@ Result:
 	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"04:27","type":"mrts"},
 	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:09","type":"mrts"},	
 	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:27","type":"mrts"}]
-Get Cities which contains Images:
+	
+Get Cities:
 
-Endpoint: http://localhost:8080/BusRoutes/images/city
+Endpoint: http://localhost:8080/rest/cities
 
 Result:
 
@@ -91,7 +92,7 @@ Result:
 	
 Get Images by City:
 
-Endpoint: http://localhost:8080/BusRoutes/images/city/Adyar
+Endpoint: http://localhost:8080/rest/cities/Adyar
 
 	[{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/4380_IIT_Madras.jpg"},
 	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/cancer institute.jpg"},
@@ -104,7 +105,7 @@ Endpoint: http://localhost:8080/BusRoutes/images/city/Adyar
 	
 Get Image: 
 
-Endpoint: http://localhost:8080/BusRoutes/images/city/Chromepet/Amenitites%20and%20urban.jpg
+Endpoint: http://localhost:8080/rest/cities/Chromepet/Amenitites%20and%20urban.jpg
 
 	
 ![Alt text](https://github.com/Saleemahmh/Routes/blob/master/src/main/resources/chennai/Chromepet/Amenitites%20and%20urban.jpg)
