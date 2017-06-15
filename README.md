@@ -59,7 +59,28 @@ Result:
 	{"route_id":4,"source":"broadway","destination":"ambathur estate"},
 	{"route_id":5,"source":"vallalar nagar","destination":"periyar nagar"}]
 	
+Get Train route (with respect to time) :
 
+Endpoints:http://localhost:8080/rest/train/routenumber?source=chennai%20beach&destination=velachery
+
+Result:
+
+
+	[{"source":"chennai beach","destination":"velachery","route":"VLB","time":"04:09","type":"mrts"},
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"04:27","type":"mrts"},
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:09","type":"mrts"},
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:27","type":"mrts"}]
+
+Get All Train route:
+
+Endpoints:http://localhost:8080/rest/train/routes
+
+Result:
+
+	[{"source":"chennai beach","destination":"velachery","route":"VLB","time":"04:09","type":"mrts"},
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"04:27","type":"mrts"},
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:09","type":"mrts"},	
+	{"source":"chennai beach","destination":"velachery","route":"VLB","time":"05:27","type":"mrts"}]
 Get Cities which contains Images:
 
 Endpoint: http://localhost:8080/BusRoutes/images/city
