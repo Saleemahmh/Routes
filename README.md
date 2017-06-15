@@ -70,7 +70,7 @@ Result:
 	
 Get Images by City:
 
-Endpoint: http://localhost:8080/BusRoutes//images/city/Adyar
+Endpoint: http://localhost:8080/BusRoutes/images/city/Adyar
 
 	[{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/4380_IIT_Madras.jpg"},
 	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/cancer institute.jpg"},
