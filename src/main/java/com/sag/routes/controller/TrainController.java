@@ -41,17 +41,10 @@ public class TrainController {
 	@Autowired
 	private ServiceI serviceI;
 	
-	
-	@GetMapping("/routes/{trainid}")   //sample endpoint---- localhost:8080/rest/train/routes/{trainid}
-	public ResponseEntity<TrainDetails> getTrainDetailsById(@PathVariable("id") Integer id) {
-		TrainDetails train = serviceI.getTrainDetailsById(id);
-		return new ResponseEntity<TrainDetails>(train, HttpStatus.OK);
-	}
-
 	@GetMapping("/routes")   //sample endpoint ------ localhost:8080/rest/train/routes
-	public ResponseEntity<List<TrainDetails>> getAllTrainDetails() {
-		List<TrainDetails> list = serviceI.getAllTrainDetails();
-		return new ResponseEntity<List<TrainDetails>>(list, HttpStatus.OK);
+	public ResponseEntity<List<TrainDetailDTO>> getAllTrainDetails() {
+		List<TrainDetailDTO> list = serviceI.getAllTrainDetails();
+		return new ResponseEntity<List<TrainDetailDTO>>(list, HttpStatus.OK);
 	}
 
 	@PostMapping("/createtrain") //sample endpoint ----- localhost:8080/rest/train/createtrain
@@ -77,7 +70,7 @@ public class TrainController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@GetMapping("/routenumber") // eg:train/routenumber?source=velachery&destination=madipakkam
+	@GetMapping("/time") // eg:train/time?source=velachery&destination=madipakkam
 	public List<TrainDetailDTO> getTrainRoute(@RequestParam(value = "source", required = true) String source,
 			@RequestParam(value = "destination", required = false) String destination) {
 		List<TrainDetailDTO> train = serviceI.getTrainRoute(source, destination);

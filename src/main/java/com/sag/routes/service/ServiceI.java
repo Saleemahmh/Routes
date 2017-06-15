@@ -44,7 +44,7 @@ public interface ServiceI {
 	
 	// Train Service
 		// Get all available TrainDetails
-		List<TrainDetails> getAllTrainDetails();
+		public List<TrainDetailDTO> getAllTrainDetails();
 
 		// Get trainDetails based on ID
 		TrainDetails getTrainDetailsById(int trainId);

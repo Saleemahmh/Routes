@@ -53,7 +53,7 @@ public interface Dao {
 	// Train DAO
 
 		// Get all available routes
-		List<TrainDetails> getAllTrainDetails();
+		public List<Object> getAllTrainDetails();
 
 		// Get Train timings for given source and destination
 		public List<Object> getTrainRoute(String source, String destination);

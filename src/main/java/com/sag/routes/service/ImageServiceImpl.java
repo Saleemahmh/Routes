@@ -33,14 +33,13 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public List<ImageUrl> getCityImageUrl(String cityname, HttpServletRequest request) {
-		File dir = new File("C:/chennai/" + cityname);
+	public List<ImageUrl> getCityImageUrl(String city, HttpServletRequest request) {
+		File dir = new File("C:/chennai/" + city);
 		List<ImageUrl> list = new ArrayList<>();
 		for (String a : dir.list()) {
 			ImageUrl d = new ImageUrl();
 			String url = request.getRequestURL().toString();
-
-			d.setUrl(url + a);
+			d.setUrl(url +"/" +a);
 			list.add(d);
 
 		}
@@ -49,10 +48,10 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public byte[] getImage(String cityname, String imagename) throws IOException {
+	public byte[] getImage(String city, String image) throws IOException {
 		BufferedImage buffIm = ImageIO
-				.read(new File("C:/chennai/" + cityname
-						+ "/" + imagename + ".jpg"));
+				.read(new File("C:/chennai/" + city
+						+ "/" + image + ".jpg"));
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(buffIm, "jpg", baos);
 		byte[] imageData = baos.toByteArray();

@@ -21,8 +21,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.sag.routes.model.BusDetails;
 import com.sag.routes.model.Route;
 import com.sag.routes.model.RouteDTO;
-import com.sag.routes.model.TrainDetailDTO;
-import com.sag.routes.model.TrainDetails;
 import com.sag.routes.service.ServiceI;
 
 //RestController which contains all REST endpoints
@@ -44,7 +42,7 @@ public class RouteController {
 	 * @PutMapping--specifies PUT method
 	 * @DeleteMapping--specifies DELETE method
 	 */
-	@GetMapping("/routes/{routeid}")   //sample endpoint---- localhost:8080/rest/bus/route/{id}
+	@GetMapping("/routes/{id}")   //sample endpoint---- localhost:8080/rest/bus/route/{id}
 	public ResponseEntity<Route> getRouteById(@PathVariable("id") Integer id) {
 		Route route = serviceI.getRouteById(id);
 		return new ResponseEntity<Route>(route, HttpStatus.OK);
@@ -79,7 +77,7 @@ public class RouteController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@GetMapping("/routenumber") // eg:/routenumber?source=velachery&destination=madipakkam
+	@GetMapping("/routenumbers") // eg:/routenumber?source=velachery&destination=madipakkam
 	public List<RouteDTO> getBusRoute(@RequestParam(value = "source", required = true) String source,
 			@RequestParam(value = "destination", required = false) String destination) {
 		List<RouteDTO> route = serviceI.getBusRoute(source, destination);
@@ -90,13 +88,13 @@ public class RouteController {
 
 	// Bus Controller
 
-	@GetMapping("/busdetails/{busid}")   //sample endpoint---- localhost:8080/rest/bus/busdetails/{id}
+	@GetMapping("/busdetails/{id}")   //sample endpoint---- localhost:8080/rest/bus/busdetails/{id}
 	public ResponseEntity<BusDetails> getBusDetailsById(@PathVariable("id") Integer id) {
 		BusDetails busDetails = serviceI.getBusDetailsById(id);
 		return new ResponseEntity<BusDetails>(busDetails, HttpStatus.OK);
 	}
 
-	@GetMapping("/allbusdetails")
+	@GetMapping("/busdetails")
 	public ResponseEntity<List<BusDetails>> getAllBusDetails() {
 		List<BusDetails> list = serviceI.getAllBusDetails();
 		return new ResponseEntity<List<BusDetails>>(list, HttpStatus.OK);

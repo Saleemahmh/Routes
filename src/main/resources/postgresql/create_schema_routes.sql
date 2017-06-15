@@ -54,3 +54,22 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.busroute_details
     OWNER to postgres;
+    
+    
+CREATE TABLE public.traindetails
+(
+    trainid integer NOT NULL,
+    destination character varying(255) COLLATE pg_catalog."default",
+    route character varying(255) COLLATE pg_catalog."default",
+    source character varying(255) COLLATE pg_catalog."default",
+    "time" bigint,
+    type character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT traindetails_pkey PRIMARY KEY (trainid)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.traindetails
+    OWNER to postgres;

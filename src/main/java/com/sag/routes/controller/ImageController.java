@@ -23,22 +23,22 @@ public class ImageController {
 	 */
 	@Autowired
 	private ImageService imageService;
-	// Sample: localhost:8080/rest/city
+	@GetMapping("")// Sample: localhost:8080/rest/city
 	public String getCities() {
 		String folders=imageService.getCities();
 		return folders;
 	}
 
-	@GetMapping("/{cityname}") //Sample: localhost:8080/rest/city/Guindy
-	public List<ImageUrl> getCityName(@PathVariable("cityname") String cityname, HttpServletRequest request) {
-		List<ImageUrl> cityimages=imageService.getCityImageUrl(cityname,request);
+	@GetMapping("/{city}") //Sample: localhost:8080/rest/city/Guindy
+	public List<ImageUrl> getCity(@PathVariable("city") String city, HttpServletRequest request) {
+		List<ImageUrl> cityimages=imageService.getCityImageUrl(city,request);
 		return cityimages;
 	}
    
-	@GetMapping(value = "{cityname}/{imagename}")
-	public byte[] getImage(@PathVariable("cityname") String cityname, @PathVariable("imagename") String imagename)
+	@GetMapping(value = "/{city}/{image}")
+	public byte[] getImage(@PathVariable("city") String city, @PathVariable("image") String image)
 			throws IOException {
-		byte[] images=imageService.getImage( cityname, imagename);
+		byte[] images=imageService.getImage( city, image);
 				return images;
 	}
 }

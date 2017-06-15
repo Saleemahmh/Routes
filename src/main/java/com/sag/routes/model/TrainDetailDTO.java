@@ -1,14 +1,27 @@
 package com.sag.routes.model;
 
 public class TrainDetailDTO {
+	
+	private Integer trainId;
 	private String source;
 	private String destination;
 	private String route;
 	private String time;
 	private String type;
+	
+	
+	public Integer getTrainId() {
+		return trainId;
+	}
+
+	public void setTrainId(Integer trainId) {
+		this.trainId = trainId;
+	}
+
 	public String getSource() {
 		return source;
 	}
+	
 	public void setSource(String source) {
 		this.source = source;
 	}

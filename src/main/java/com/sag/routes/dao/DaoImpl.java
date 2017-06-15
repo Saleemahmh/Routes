@@ -136,9 +136,9 @@ public class DaoImpl implements Dao {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<TrainDetails> getAllTrainDetails() {
-			String hql = "FROM TrainDetails as trn ORDER BY trn.trainId";
-			return (List<TrainDetails>) entityManager.createQuery(hql).getResultList();
+		public List<Object> getAllTrainDetails() {
+			String hql = "select trn.source,trn.destination,trn.route,trn.time,trn.type FROM TrainDetails as trn ORDER BY trn.trainId";
+			return (List<Object>) entityManager.createQuery(hql).getResultList();
 		}
 
 		@Override

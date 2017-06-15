@@ -107,13 +107,30 @@ public class ServiceImpl implements ServiceI {
 
 	@Override
 	public TrainDetails getTrainDetailsById(int trainId) {
+		
 		TrainDetails obj = dao.getTrainDetailsById(trainId);
 		return obj;
 	}
 
 	@Override
-	public List<TrainDetails> getAllTrainDetails() {
-		return dao.getAllTrainDetails();
+	public List<TrainDetailDTO> getAllTrainDetails() {
+		List<Object> trainRoute = dao.getAllTrainDetails();
+		List<TrainDetailDTO> trainlist = new ArrayList<>();
+		for (Object obj : trainRoute) {
+			Object[] objArray = (Object[]) obj;
+			TrainDetailDTO traindto = new TrainDetailDTO();
+			traindto.setSource(String.valueOf(objArray[0]));
+			traindto.setDestination(String.valueOf(objArray[1]));
+			traindto.setRoute(String.valueOf(objArray[2]));
+			String hms = getTimeInString(Long.valueOf(String.valueOf(objArray[3])));
+			traindto.setTime(hms);
+			traindto.setType(String.valueOf(objArray[4]));
+			trainlist.add(traindto);
+		}
+
+		return trainlist;
+
+		
 	}
 
 	@Override
