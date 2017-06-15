@@ -22,7 +22,7 @@ import com.sag.routes.model.ImageUrl;
 public class ImageServiceImpl implements ImageService {
 	 @Override
 	public String getCities() {
-		File file = new File("C:/Users/saleem/Desktop/RESTWorkspace/Routes/src/main/resources/chennai");
+		File file = new File("C:/chennai");
 		String[] directories = file.list(new FilenameFilter() {
 			@Override
 			public boolean accept(File current, String name) {
@@ -34,7 +34,7 @@ public class ImageServiceImpl implements ImageService {
 
 	@Override
 	public List<ImageUrl> getCityImageUrl(String cityname, HttpServletRequest request) {
-		File dir = new File("C:/Users/saleem/Desktop/RESTWorkspace/Routes/src/main/resources/chennai/" + cityname);
+		File dir = new File("C:/chennai/" + cityname);
 		List<ImageUrl> list = new ArrayList<>();
 		for (String a : dir.list()) {
 			ImageUrl d = new ImageUrl();
@@ -51,7 +51,7 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public byte[] getImage(String cityname, String imagename) throws IOException {
 		BufferedImage buffIm = ImageIO
-				.read(new File("C:/Users/saleem/Desktop/RESTWorkspace/Routes/src/main/resources/chennai/" + cityname
+				.read(new File("C:/chennai/" + cityname
 						+ "/" + imagename + ".jpg"));
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(buffIm, "jpg", baos);

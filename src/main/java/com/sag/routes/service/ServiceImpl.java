@@ -2,6 +2,7 @@ package com.sag.routes.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.sag.routes.dao.Dao;
 import com.sag.routes.model.BusDetails;
 import com.sag.routes.model.Route;
 import com.sag.routes.model.RouteDTO;
+import com.sag.routes.model.TrainDetailDTO;
 import com.sag.routes.model.TrainDetails;
 
 //Service Implementation for route and bus service with the Annotation @Service
@@ -100,10 +102,9 @@ public class ServiceImpl implements ServiceI {
 	public void deleteBusDetails(int busDetailsId) {
 		dao.deleteBusDetails(busDetailsId);
 	}
-	
+
 	// Train Service Implementation
-	
-	
+
 	@Override
 	public TrainDetails getTrainDetailsById(int trainId) {
 		TrainDetails obj = dao.getTrainDetailsById(trainId);
@@ -117,7 +118,8 @@ public class ServiceImpl implements ServiceI {
 
 	@Override
 	public synchronized boolean addTrainDetails(TrainDetails trainDetails) {
-		if (dao.trainDetailsExists(trainDetails.getSource(),trainDetails.getDestination(),trainDetails.getRoute(),trainDetails.getTime())) {
+		if (dao.trainDetailsExists(trainDetails.getSource(), trainDetails.getDestination(), trainDetails.getRoute(),
+				trainDetails.getTime(), trainDetails.getType())) {
 			return false;
 		} else {
 			dao.addTrainDetails(trainDetails);
@@ -136,11 +138,28 @@ public class ServiceImpl implements ServiceI {
 	}
 
 	@Override
-	public List<TrainDetails> getTrainRoute(String source, String destination) {
-		List<TrainDetails> trainRoute = dao.getTrainRoute(source, destination);
-		
-		return trainRoute;
+	public List<TrainDetailDTO> getTrainRoute(String source, String destination) {
+		List<Object> trainRoute = dao.getTrainRoute(source, destination);
+		List<TrainDetailDTO> trainlist = new ArrayList<>();
+		for (Object obj : trainRoute) {
+			Object[] objArray = (Object[]) obj;
+			TrainDetailDTO traindto = new TrainDetailDTO();
+			traindto.setSource(String.valueOf(objArray[0]));
+			traindto.setDestination(String.valueOf(objArray[1]));
+			traindto.setRoute(String.valueOf(objArray[2]));
+			String hms = getTimeInString(Long.valueOf(String.valueOf(objArray[3])));
+			traindto.setTime(hms);
+			traindto.setType(String.valueOf(objArray[4]));
+			trainlist.add(traindto);
+		}
+
+		return trainlist;
 
 	}
-
+	//To convert given long time which is given in millisecond to hour
+	public String getTimeInString(long obj) {
+		String hms =String.format("%02d:%02d",TimeUnit.MILLISECONDS.toHours(obj),
+				TimeUnit.MILLISECONDS.toSeconds(obj) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(obj)));
+		return hms;
+	}
 }

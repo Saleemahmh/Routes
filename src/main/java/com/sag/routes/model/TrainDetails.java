@@ -1,12 +1,9 @@
 package com.sag.routes.model;
 
-import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /*Model class to create traindetails table in PostgreSQL
  * with trainId,source,destination,time,route
@@ -26,21 +23,24 @@ public class TrainDetails {
 		@Column
 		private String destination;
 		@Column
-		@JsonFormat(pattern = "HH:mm")
-		private Timestamp time;
+		//Time stored in milliseconds
+		private long time;
 		@Column
 		private String route;
+		@Column
+		private String type;
 		
 		
 		public TrainDetails() {	}
 
 		
-		public TrainDetails(Integer trainId, String source, String destination, Timestamp time, String route) {
+		public TrainDetails(Integer trainId, String source, String destination, long time, String route,String type) {
 			this.trainId = trainId;
 			this.source = source;
 			this.destination = destination;
 			this.time = time;
 			this.route = route;
+			this.type=type;
 		}
 
 
@@ -67,17 +67,17 @@ public class TrainDetails {
 
 		public void setDestination(String destination) {
 			this.destination = destination;
-		}
+		}	
 
-		
-
-		public Timestamp getTime() {
+		public long getTime() {
 			return time;
 		}
 
-		public void setTime(Timestamp time) {
+
+		public void setTime(long time) {
 			this.time = time;
 		}
+
 
 		public String getRoute() {
 			return route;
@@ -85,6 +85,16 @@ public class TrainDetails {
 
 		public void setRoute(String route) {
 			this.route = route;
+		}
+
+
+		public String getType() {
+			return type;
+		}
+
+
+		public void setType(String type) {
+			this.type = type;
 		}
 		
 		

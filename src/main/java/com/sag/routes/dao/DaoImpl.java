@@ -1,6 +1,5 @@
 package com.sag.routes.dao;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -163,9 +162,9 @@ public class DaoImpl implements Dao {
 		}
 
 		@Override
-		public boolean trainDetailsExists(String source, String destination,String route,Timestamp time) {
-			String hql = "FROM TrainDetails as trn WHERE trn.source = ? and trn.destination = ? and trn.route = ?and trn.time = ?";
-			int count = entityManager.createQuery(hql).setParameter(1, source).setParameter(2, destination).setParameter(3,route ).setParameter(4, time).getResultList()
+		public boolean trainDetailsExists(String source, String destination,String route,long time,String type) {
+			String hql = "FROM TrainDetails as trn WHERE trn.source = ? and trn.destination = ? and trn.route = ?and trn.time = ? and trn.type=?";
+			int count = entityManager.createQuery(hql).setParameter(1, source).setParameter(2, destination).setParameter(3,route ).setParameter(4,time).setParameter(5, type).getResultList()
 					.size();
 			return count > 0;
 		}
@@ -180,11 +179,11 @@ public class DaoImpl implements Dao {
 		
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<TrainDetails> getTrainRoute(String source, String destination) {
+		public List<Object> getTrainRoute(String source, String destination) {
 			System.out.println(source + destination);
-			String hql = "FROM TrainDetails as trn where trn.source = '"
+			String hql = "select trn.source,trn.destination,trn.route,trn.time,trn.type FROM TrainDetails as trn where trn.source = '"
 					+ source.toLowerCase() + "' and trn.destination =  '" + destination.toLowerCase() + "'";
-			return (List<TrainDetails>) entityManager.createQuery(hql).getResultList();
+			return (List<Object>) entityManager.createQuery(hql).getResultList();
 
 			
 
