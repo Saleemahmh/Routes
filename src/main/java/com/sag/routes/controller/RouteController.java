@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.sag.routes.model.RouteDTO;
 import com.sag.routes.service.ServiceI;
 
 //RestController which contains all REST endpoints
+
 @RestController
 @RequestMapping("/bus")     //sample endpoint--- localhost:8080/rest/bus
 public class RouteController {
@@ -42,12 +44,13 @@ public class RouteController {
 	 * @PutMapping--specifies PUT method
 	 * @DeleteMapping--specifies DELETE method
 	 */
+	
 	@GetMapping("/routes/{id}")   //sample endpoint---- localhost:8080/rest/bus/route/{id}
 	public ResponseEntity<Route> getRouteById(@PathVariable("id") Integer id) {
 		Route route = serviceI.getRouteById(id);
 		return new ResponseEntity<Route>(route, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping("/routes")
 	public ResponseEntity<List<Route>> getAllRoutes() {
 		List<Route> list = serviceI.getAllRoutes();
@@ -76,7 +79,7 @@ public class RouteController {
 		serviceI.deleteRoute(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@GetMapping("/routenumbers") // eg:/routenumber?source=velachery&destination=madipakkam
 	public List<RouteDTO> getBusRoute(@RequestParam(value = "source", required = true) String source,
 			@RequestParam(value = "destination", required = false) String destination) {
@@ -93,7 +96,7 @@ public class RouteController {
 		BusDetails busDetails = serviceI.getBusDetailsById(id);
 		return new ResponseEntity<BusDetails>(busDetails, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping("/busdetails")
 	public ResponseEntity<List<BusDetails>> getAllBusDetails() {
 		List<BusDetails> list = serviceI.getAllBusDetails();

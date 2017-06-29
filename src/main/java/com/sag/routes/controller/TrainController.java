@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,7 @@ public class TrainController {
 
 	@Autowired
 	private ServiceI serviceI;
-	
+	@CrossOrigin
 	@GetMapping("/routes")   //sample endpoint ------ localhost:8080/rest/train/routes
 	public ResponseEntity<List<TrainDetailDTO>> getAllTrainDetails() {
 		List<TrainDetailDTO> list = serviceI.getAllTrainDetails();
@@ -69,7 +70,7 @@ public class TrainController {
 		serviceI.deleteTrainDetails(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@GetMapping("/time") // eg:train/time?source=velachery&destination=madipakkam
 	public List<TrainDetailDTO> getTrainRoute(@RequestParam(value = "source", required = true) String source,
 			@RequestParam(value = "destination", required = false) String destination) {
