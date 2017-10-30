@@ -94,14 +94,14 @@ Get Images by City:
 
 Endpoint: http://localhost:8080/rest/cities/Adyar
 
-	[{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/4380_IIT_Madras.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/cancer institute.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/CLRI Building_0.JPG"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/cooum river.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/cooum_0_0.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/fortis-malar-hospit_905330f.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/iit-madras_650x400_41456254328.jpg"},
-	{"url":"http://localhost:8080/BusRoutes//images/city/Adyar/malar hospital.jpg"}]
+	[{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/4380_IIT_Madras.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/cancer institute.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/CLRI Building_0.JPG"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/cooum river.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/cooum_0_0.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/fortis-malar-hospit_905330f.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/iit-madras_650x400_41456254328.jpg"},
+	{"url":"http://localhost:8080/BusRoutes/images/city/Adyar/malar hospital.jpg"}]
 	
 Get Image: 
 
